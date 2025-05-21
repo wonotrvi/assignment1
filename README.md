@@ -1,16 +1,23 @@
-# Assignment 1 - Personal Finance Manager
+# Assignment 1 - MyFinanceLog
 
 ## Description
 
-This Node.js module helps manage personal finances by tracking income expenses, and calculating the overall balance. You can also view expense breakdowns by category and export a summary of all transactions.
+MyFinanceLog is a simple Node.js tool to track income, expenses, and balances. It provides clear summaries, category breakdowns, and a full transaction history to help manage your finances effectively.
 
 ---
+
+## Features
+- Add income and expense records with categories
+- Calculate current balance
+- View expense breakdown by category
+- Print detailed transaction history
+- Generate summary of total income, expenses, and balance
 
 ## File Required
 
 Only **one** file is required for this assignment:
 
-- `OhRuiMin_WAD.js` – This is my personal finance management Node.js module.
+- `OhRuiMin_finance.js` – This is my personal finance management Node.js module.
 
 ---
 
@@ -20,61 +27,85 @@ Only **one** file is required for this assignment:
 
 Ensure [Node.js](https://nodejs.org/) is installed on your system.
 
-Create a testing file like `app.js` to try the module. For example:
+Create a testing file like `app.js` to try the module.
+
+Example folder structure:
 
 assignment1/
-- OhRuiMin_WAD.js
+- OhRuiMin_finance.js
 - app.js
 - README.md
 
 ---
 
-### 2. Example `app.js`
+### 2. Example of `app.js`
 
 ```js
+console.log("========================================");
 console.log("Starting my personal finance tracker app");
+console.log("========================================\n");
 
-const financeManager = require('./OhRuiMin_WAD.js');
+const finance = require('./OhRuiMin_finance.js');
 
-console.log("Finance Manager Description: " + financeManager.description);
+// Show App Description
+console.log("App Description:");
+console.log(finance.description);
+console.log();
 
-//Add incomes
-financeManager.addIncome("Salary", 5000);
-financeManager.addIncome("Freelance", 800);
+// ======= Add Income =======
+console.log("======= Adding Income =======")
+finance.addIncome("Salary", 5000);
+finance.addIncome("Freelance", 800);
+console.log();
 
-//Add expenses
-financeManager.addExpense("Food", 400);
-financeManager.addExpense("Transport", 270);
-financeManager.addExpense("Entertainment", 300);
+// ======= Add Expenses =======
+console.log("======= Adding Expenses =======")
+finance.addExpense("Food", 400);
+finance.addExpense("Transport", 270);
+finance.addExpense("Entertainment", 300);
+console.log();
 
-//Display results
-console.log("Balance: $" + financeManager.calculateBalance());
-console.log("Expense Breakdown: ", financeManager.getExpenseBreakdown());
-console.log("All Transactions: ", financeManager.exportSummary());
+// ======= Balance =======
+console.log("======= Current Balance =======")
+console.log("Balance: $" + finance.calculateBalance());
+console.log();
 
+// ======= Expense Breakdown =======
+console.log("======= Expense Breakdown =======")
+console.log(finance.getExpenseBreakdown());
+console.log();
+
+// ======= Transaction History =======
+console.log("======= Transaction History =======")
+finance.printTransactions();
+console.log();
+
+// ======= Summary =======
+console.log("======= Summary =======")
+console.log(finance.getSummary());
+console.log();
 ```
 
-# Functions Available
+### 3. Functions Available
 
-| Function               | Description                                        | Parameters                          |
+| Function  | Description   | Parameters    |
 |------------------------|----------------------------------------------------|-------------------------------------|
-| `addIncome(source, amount)`     | Adds a new income record                          | `source` (string), `amount` (number) |
-| `addExpense(category, amount)`  | Adds a new expense record                         | `category` (string), `amount` (number) |
-| `calculateBalance()`            | Returns total balance after subtracting expenses from incomes | None                                |
-| `getExpenseBreakdown()`         | Returns expenses grouped by category             | None                                |
-| `exportSummary()`               | Exports a list of all transactions               | None                                |
+|`addIncome(source, amount)`|Adds a new income record and logs it.| `source` (string), `amount` (number) |
+|`addExpense(category, amount)`|Adds a new expense record and logs it.| `category` (string), `amount` (number) |
+| `calculateBalance()`| Returns total balance (incomes - expenses) | None|
+| `getExpenseBreakdown()`| Returns a formatted string showing total spent per category| None|
+| `printTransactions()`| Prints a numbered list of all transactions to the console.|None|
+| `getSummary()`| Returns a summary of total income, total expenses, and balance.|None|
 
 ---
 
-## How to run app.js
+### 4. How to run app.js
 
 ```bash
 node app.js
 ```
 
 # References
-- [Mint - Personal Finance App](https://mint.intuit.com)
-- [Node.js Modules Documentation](https://nodejs.org/api/modules.html)
-- [MDN: JavaScript Date Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-
----
+- [MyMoneySense - Singapore's Financial Literacy Programme](https://www.mymoneysense.gov.sg/)
+- [Mint – Personal Finance App](https://mint.intuit.com/)
+- [JavaScript Array `reduce()` Method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
